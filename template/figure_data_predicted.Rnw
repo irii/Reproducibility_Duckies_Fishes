@@ -1,0 +1,15 @@
+<<plot2, fig.pos="t", fig.pos="htp!", fig.height=3, fig.cap="Predicted History Sales Data", echo=FALSE>>=
+
+fig2_predicted <- filter(data.frame(data_input), Predicted == TRUE)
+fig2_colors <- c("Fish" = "blue", "Ducks" = "red", "Total" = "orange")
+
+ggplot(data_input, aes(x=Date)) +
+  geom_line(aes(y = Fish, color = "Fish")) +
+  geom_line(aes(y = Ducks, color="Ducks")) +
+  geom_line(aes(y = Total, color="Total")) +
+  geom_rect(data = data_input, aes(xmin = min(Date), xmax = max(Date), ymin = -Inf, ymax = Inf), alpha = 0) +
+  annotate("rect", xmin = min(fig2_predicted$Date), xmax = max(fig2_predicted$Date), ymin=-Inf, ymax=Inf, alpha=0.2, fill="red") +
+  annotate("text", x = min(fig2_predicted$Date), y=(max(fig2_predicted$Total) * 0.15), label="Predicted") +
+  labs(x = "Time", y = "Amount", color = "Legend") +
+  scale_color_manual(values = fig2_colors)
+@

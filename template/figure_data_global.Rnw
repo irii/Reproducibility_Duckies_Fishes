@@ -1,0 +1,5 @@
+<<global, echo=FALSE>>=
+data_input = read.csv(file="historical_sales_data.optimized.csv", head=TRUE)
+data_input$Date <- as.Date(data_input$Date, format= "%Y-%m-%d")
+data_input$Predicted <- as.logical(data_input$Predicted)
+@

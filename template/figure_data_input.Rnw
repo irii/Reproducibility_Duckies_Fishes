@@ -1,0 +1,14 @@
+<<plot1, fig.pos="t", fig.pos="htp!", fig.height=3, fig.cap="History Sales Data", echo=FALSE>>=
+
+fig1_unpredicted <- filter(data.frame(data_input), Predicted == FALSE)
+
+fig1_colors <- c("Fish" = "blue", "Ducks" = "red", "Total" = "orange")
+
+ggplot(fig1_unpredicted, aes(x=Date)) +
+  geom_line(aes(y = Fish, color = "Fish")) +
+  geom_line(aes(y = Ducks, color="Ducks")) +
+  geom_line(aes(y = Total, color="Total")) +
+  geom_rect(data = fig1_unpredicted, aes(xmin = min(Date), xmax = max(Date), ymin = -Inf, ymax = Inf), alpha = 0) +
+  labs(x = "Time", y = "Amount", color = "Legend") +
+  scale_color_manual(values = fig1_colors)
+@
