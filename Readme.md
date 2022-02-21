@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/461684112.svg)](https://zenodo.org/badge/latestdoi/461684112)
+
 # Duckies vs. Fish
 Cheat-sheet for reproducing duckies vs. fish
 
